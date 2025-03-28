@@ -25,6 +25,12 @@ class Card:
     def __repr__(self):
         return self.__str__()
 
+    def __eq__(self, other):
+        return self.rank == other.rank
+
+    def __lt__(self, other):
+        return self.RANKS.index(self.rank) < self.RANKS.index(other.rank)
+
 class Deck:
     def __init__(self):
         self._cards = [Card(r, s) for r in Card.RANKS for s in Card.SUITS]
@@ -41,6 +47,7 @@ class Deck:
 
     def deal(self):
         return self.cards.pop(0)
+
 
     # def __len__(self):
     #     return len(self._cards)
